@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Categoria</title>
+  <link rel="stylesheet" href="{% static 'css/Tela3_Categoria.css' %}">
+  <script src="{% static 'js/main.js' %}"defer></script>
+</head>
+<body>
+  <!-- TOPO -->
+  <header class="cabecalho">
+    <div class="cabecalho-esquerda">
+      <h1 class="marca">TechHome</h1>
+    </div>
+
+    <div class="cabecalho-centro">
+      <form action="{% url 'home' %}" method="GET">
+        <input name="barra" type="text" placeholder="Buscar eletrônicos..." class="input-busca">
+      </form>
+      
+    </div>
+
+    <nav class="cabecalho-direita">
+      <a href="{% url 'home' %}">Inicio</a>
+      <a href="#" id="cabecalho-usando">Categoria</a>
+      <a href="{% url 'perfil' %}">Perfil</a>
+      <a href="{% url 'suporte' %}">Contato</a>
+    </nav>
+  </header>
+
+  <!-- PRODUTOS -->
+  <main class="conteudo">
+    <form action="" method="get" class="form-categoria">
+      <select name="categoria" class="categoria">
+        <option value="">Todas</option>
+        <option value="Notebook">Notebook</option>
+        <option value="Televisão">Televisão</option>
+        <option value="Videogame">Videogame</option>
+      </select>
+
+      <button type="submit" class="filtro">Filtrar</button>
+    </form>
+      
+    
+
+      <div class="carrossel-container">
+
+          
+          
+          {% for categorias in categoria %}
+            {% if categorias.nome == "Notebook" %}
+            <div class="topo">
+                <h2>{{categorias.nome}}</h2>
+            </div>
+            {% endif %}
+          {% endfor %}
+
+
+          <div class="carrossel" id="carrossel">
+            {% for produtos in produto %}
+              <div class="card">
+                  <img src="{{produtos.imagem.url}}">
+                  <h3>{{produtos.nome}}</h3>
+                  <p class="preco">{{produtos.preco}}</p>
+                  
+                  <a href="{% url 'detalhe_produto' produtos.id %}" class="acoes-produto">
+                    <button class="btn-carrinho">Ver detalhes</button>
+                  </a>
+              </div>
+             
+            {% endfor %}
+              
+
+
+              
+            
+
+          </div>
+
+      </div>
+     
+  </main>
+
+  <footer class="rodape">
+    <p>© 2026 TechHome Direitos Autorais Para José Matheus</p>
+  </footer>
+  
+</body>
+</html>

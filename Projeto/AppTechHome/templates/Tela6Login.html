@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - TechHome</title>
+  <link rel="stylesheet" href="{% static 'css/Tela1login.css'%}">
+</head>
+
+<body>
+
+  <div class="auth-container">
+
+    <div class="auth-banner">
+      <h1>TechHome</h1>
+      <p>Os melhores eletrônicos com bons preços.</p>
+    </div>
+
+  <div class="auth-form">
+      <form method="post" class="auth-form">
+        {% csrf_token %}  
+        <h2>Entrar</h2>
+          
+        
+          <input type="text" placeholder="Login" name="username">
+          
+         
+          <input type="password" placeholder="Senha" name="password">
+
+          <button type="submit">Entrar</button>
+
+          
+
+      </form>
+
+      <br>
+
+          {% if form.errors %}
+            <div class="error">
+              {{form.errors}}
+            </div>
+          {% endif %}
+
+      <p>Não tem conta? <a href="Tela2Cadastro.html">Criar conta</a></p>
+    </div>
+
+  </div>
+
+</body>
+</html>

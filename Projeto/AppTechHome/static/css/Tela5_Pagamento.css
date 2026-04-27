@@ -1,0 +1,122 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* BODY FLEX (rodapé correto) */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: rgb(244, 246, 248);
+}
+
+/* CABEÇALHO */
+.cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0b0f14;
+  padding: 15px 30px;
+  color: white;
+}
+
+.marca {
+  color: rgb(77, 163, 255);
+}
+
+.menu a {
+  margin-left: 20px;
+  color: white;
+  text-decoration: none;
+}
+
+.menu a:hover {
+  color: rgb(77, 163, 255);
+}
+
+/* CONTEÚDO */
+.pagina-pagamento {
+  flex: 1;
+  padding: 40px 20px;
+}
+
+.titulo {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* CONTAINER */
+.container-pagamento {
+  display: flex;
+  gap: 30px;
+  max-width: 1000px;
+  margin: auto;
+  flex-wrap: wrap;
+}
+
+/* FORM */
+.form-pagamento {
+  flex: 2;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.form-pagamento h3 {
+  margin-top: 15px;
+}
+
+.form-pagamento input,.form-pagamento select {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid rgb(204, 204, 204);
+}
+
+/* BOTÃO */
+.btn-finalizar {
+  margin-top: 20px;
+  background-color: rgb(28, 109, 208);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-finalizar:hover {
+  background-color: rgb(77, 163, 255);
+}
+
+/* RESUMO */
+.resumo-compra {
+  flex: 1;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  height: fit-content;
+}
+
+.resumo-compra .total {
+  font-weight: bold;
+  color: green;
+  margin-top: 10px;
+}
+
+.resumo-compra img {
+  width: 100px;
+}
+/* RODAPÉ */
+.rodape {
+  background-color: rgb(11, 15, 20);
+  color: white;
+  text-align: center;
+  padding: 15px;
+}

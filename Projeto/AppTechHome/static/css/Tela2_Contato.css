@@ -1,0 +1,137 @@
+
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+html, body {
+  height: 100%;
+}
+/* BODY COMO FLEX */
+body {
+  background-color: rgb(244, 246, 248);
+  display: flex;
+  flex-direction: column;
+
+}
+
+/* CABEÇALHO */
+.cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(11, 15, 20);
+  padding: 15px 30px;
+  color: white;
+}
+
+.marca {
+  color: rgb(77, 163, 255);
+  font-size: 24px;
+}
+
+.menu a {
+  margin-left: 20px;
+  color: white;
+  text-decoration: none;
+}
+
+#cabecalho-usando {
+  color: rgb(77, 163, 255);
+}
+
+.menu a:hover {
+  color: rgb(77, 163, 255);
+}
+
+/* CONTEÚDO PRINCIPAL */
+.pagina-contato {
+  flex: 1; 
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.titulo {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.subtitulo {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #555;
+}
+
+/* CONTAINER */
+.container-contato {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+/* FORMULÁRIO */
+.formulario-contato {
+  flex: 1;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.formulario-contato label {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.formulario-contato input,
+.formulario-contato textarea {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid rgb(204, 204, 204);
+}
+
+/* BOTÃO */
+.btn-enviar {
+  margin-top: 15px;
+  background-color: rgb(28, 109, 208);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-enviar:hover {
+  background-color: rgb(77, 163, 255);
+}
+
+/* INFO */
+.info-contato {
+  flex: 1;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.info-contato h3 {
+  margin-top: 10px;
+}
+
+.info-contato p {
+  margin: 5px 0;
+}
+
+/* RODAPÉ */
+.rodape {
+  background-color: rgb(11, 15, 20);
+  color: white;
+  text-align: center;
+  padding: 15px ;
+}

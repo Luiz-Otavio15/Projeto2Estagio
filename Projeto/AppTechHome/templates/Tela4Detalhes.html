@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalhes</title>
+  <link rel="stylesheet" href="{% static 'css/Tela4_detalhes.css'%}">
+</head>
+<body>
+  <!-- TOPO -->
+  <header class="cabecalho">
+    <div class="cabecalho-esquerda">
+      <h1 class="marca">TechHome</h1>
+    </div>
+
+    <div class="cabecalho-centro">
+      <form action="{% url 'home' %}" method="GET">
+        <input name="barra" type="text" placeholder="Buscar eletrônicos..." class="input-busca">
+      </form>
+      
+    </div>
+
+    <nav class="cabecalho-direita">
+      <a href="{% url 'home'%}">Inicio</a>
+      <a href="{% url 'categoria_produto'%}">Categoria</a>
+      <a href="{}">Contato</a>
+    </nav>
+  </header>
+
+  <!-- PRODUTOS -->
+  <main class="conteudo">
+
+    <div class="vitrine">
+     
+      
+      <div class="item-produto">
+        
+        <img src="{{produto.imagem.url}}" alt="">
+        
+      </div>
+      
+      <div class="info">
+
+        <h2>{{produto.nome}}</h2>
+
+        <p>{{produto.descricao}}</p>
+        <br>
+        
+        <p>Quantidade no estoque: {{produto.estoque}}</p>
+        <br>
+
+        <h1 class="preco">R$ {{produto.preco}}</h1>
+        
+        
+        
+        <div class="acoes-produto">
+          
+            <a href="{% url 'pagamento_produto' produto.id %}">
+               <button type='submit'class="btn-comprar">Comprar agora</button>
+            </a>
+           
+          
+            
+        </div>
+       
+    </div>
+    </div>
+  </main>
+
+  <footer class="rodape">
+    <p>© 2026 TechHome Direitos Autorais Para José Matheus</p>
+  </footer>
+  
+</body>
+</html>

@@ -1,0 +1,98 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  height: 100vh;
+  background: #7bb6fd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* CONTAINER */
+.auth-container {
+  width: 800px;
+  height: 450px;
+  display: flex;
+  border-radius: 10px;
+  overflow: hidden;
+  background: white;
+}
+
+/* LADO ESQUERDO */
+.auth-banner {
+  flex: 1;
+  background: #1c6dd0;
+  color: white;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.auth-banner h1 {
+  margin-bottom: 10px;
+}
+
+/* FORM */
+.auth-form {
+  flex: 1;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.auth-form h2 {
+  margin-bottom: 20px;
+}
+
+/* INPUT */
+.auth-form input {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* BOTÃO */
+.auth-form button {
+  padding: 10px;
+  background: #1c6dd0;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.auth-form button:hover {
+  background: #4da3ff;
+}
+
+/* TEXTO */
+.auth-form p {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.auth-form a {
+  color: #1c6dd0;
+  text-decoration: none;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .auth-container {
+    flex-direction: column;
+    height: auto;
+    width: 90%;
+  }
+
+  .auth-banner {
+    text-align: center;
+  }
+}

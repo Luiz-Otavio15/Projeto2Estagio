@@ -1,0 +1,91 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Pagamento</title>
+  <link rel="stylesheet" href="{% static 'css/Tela5_Pagamento.css' %}">
+</head>
+
+<body>
+
+  <!-- CABEÇALHO -->
+  <header class="cabecalho">
+    <div class="cabecalho-esquerda">
+      <h1 class="marca">TechHome</h1>
+    </div>
+
+    
+
+    <nav class="menu">
+      <a href="{% url 'home' %}">Inicio</a>
+      <a href="{% url 'categoria_produto' %}">Categoria</a>
+      <a href="{% url 'contato' %}">Contato</a>
+    </nav>
+  </header>
+
+  <!-- CONTEÚDO -->
+  <main class="pagina-pagamento">
+
+    <h2 class="titulo">Finalizar Compra</h2>
+
+    <div class="container-pagamento">
+
+      <!-- DADOS DO CLIENTE -->
+      <form action="{% url 'finalizacao' produto.id %}" method="post" class="form-pagamento">
+        {% csrf_token %} 
+
+        <h3>Dados do Cliente</h3>
+
+        <input type="text" placeholder="Nome completo" name="nome_completo" required>
+        <input type="email" placeholder="Email" name="email" required>
+        <input type="text" placeholder="CPF" name="cpf" required>
+
+        <h3>Endereço</h3>
+
+        <input type="text" placeholder="Rua e número" name="rua" required>
+        <input type="text" placeholder="Cidade" name="cidade" required>
+        <input type="text" placeholder="Estado" name="estado" required>
+
+        <h3>Pagamento</h3>
+
+        <select>
+          <option>Cartão de Crédito</option>
+          <option>Pix</option>
+          <option>Boleto</option>
+        </select>
+
+        <button type="submit" class="btn-finalizar">Finalizar Compra</button>
+
+      </form>
+
+       
+      
+
+
+      
+
+      <!-- RESUMO -->
+      <div class="resumo-compra">
+        <h3>Resumo do Pedido</h3>
+        <img src="{{produto.imagem.url}}" alt="{{produto.nome}}">
+        <p>{{produto.nome}}</p>
+        <br>
+        <p>Preço: R$ {{produto.preco}}</p>
+        <hr>
+        <p class="total">Total: R$ {{produto.preco}}</p>
+      
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer class="rodape">
+    <p>© 2026 TechHome Direitos Autorais Para José Matheus</p>
+  </footer>
+
+</body>
+</html>

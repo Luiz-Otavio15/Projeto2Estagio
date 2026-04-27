@@ -1,0 +1,71 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Perfil - TechHome</title>
+  <link rel="stylesheet" href="{% static 'css/Tela3Perfil.css' %}">
+</head>
+
+<body>
+
+  <header class="cabecalho">
+    <h1 class="marca">TechHome</h1>
+
+    <nav>
+      <a href="{% url 'home' %}">Home</a>
+      {% if gerente %}
+        <a href="{% url 'gerenciador' %}">Gerenciamento</a>
+      {% endif %}
+    </nav>
+  </header>
+
+  <main class="perfil-container">
+
+    <!-- PERFIL -->
+    <section class="perfil-box">
+      <h2>Meu Perfil</h2>
+
+      <div class="foto">
+        <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png">
+      </div>
+
+      <label>Nome</label>
+      <div class="fake-input">{{user.username}}</div>
+      <label>Email</label>
+      <div class="fake-input">{{user.email}}</div>
+    
+      <form action="{% url 'sair' %}" method="post">
+        {% csrf_token %}
+        <button class="btn" type="submit">Sair</button>
+      </form>
+
+    </section>
+
+    <!-- BUSCAS -->
+    <section class="buscas-box">
+      <h2>Buscas recentes</h2>
+
+      <div class="vitrine-perfil">
+
+        <div class="item">
+          <img src="https://http2.mlstatic.com/D_Q_NP_670475-MLA99453294496_112025-F.webp">
+          <h3>Notebook Gamer</h3>
+          <p>R$ 4.999</p>
+          <button>Comprar</button>
+        </div>
+
+        <div class="item">
+          <img src="https://d1r6yjixh9u0er.cloudfront.net/Custom/Content/Products/83/27/83276_smartphone-poco-f8-pro-5g-nfc-br-12-12gb-ram-virtual-512gb-prin_s2_639051238275360175.webp">
+          <h3>Smartphone</h3>
+          <p>R$ 2.199</p>
+          <button>Comprar</button>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>

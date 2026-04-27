@@ -1,0 +1,143 @@
+{% load static %}
+
+
+
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>Contato</title>
+  <link rel="stylesheet" href="{% static 'css/Tela2_Contato.css' %}">
+
+</head>
+
+
+
+<body>
+
+
+
+ <!-- TOPO -->
+
+ <header class="cabecalho">
+
+   <h1 class="marca">TechHome</h1>
+
+
+
+   <nav class="menu">
+
+     <a href="{% url 'home' %}">Início</a>
+
+     <a href="{% url 'categoria_produto' %}">Categoria</a>
+     <a href="{% url 'perfil' %}">Perfil</a>
+
+     <a href="#" id="cabecalho-usando">Contato</a>
+
+
+   </nav>
+
+ </header>
+
+
+
+<!-- CONTEÚDO -->
+
+<main class="pagina-contato">
+
+
+
+    <h2 class="titulo">Central de Suporte</h2>
+
+    <p class="subtitulo">Precisa de ajuda? Problemas na compra? Fale com a gente!</p>
+
+
+    <div class="container-contato">
+
+
+     <!-- FORMULÁRIO -->
+
+     <form class="formulario-contato" action="{% url 'contato' %}" method="post">
+      {% csrf_token %} 
+       <label>Nome</label>
+
+       <input type="text" placeholder="Seu nome" required name="nome">
+
+
+
+       <label>Assunto</label>
+
+       <input type="text" placeholder="Motivo do contato" name="assunto">
+
+
+
+       <label>Mensagem</label>
+
+       <textarea placeholder="Digite sua mensagem..." rows="5" name="mensagem"></textarea>
+
+
+
+       <button type="submit" class="btn-enviar">Enviar mensagem</button>
+
+     </form>
+
+
+
+     <!-- INFO -->
+
+     <div class="info-contato">
+
+       <h3>Informações para suporte</h3>
+
+       <h5>E-mail</h5>
+
+       <p> contatoparasupote@techhome.com</p>
+
+       <h5>Telefone</h5>
+
+        <p> (83) 4002-8922</p>
+
+        <h5>Hórarios de atendimento</h5>
+
+        <p> Seg a Sex - 08h às 18h</p>
+
+
+
+       <h3>Problemas na interface?</h3>
+
+       <h5>Estámos dispostos a receber críticas costrutivas para melhorar nossa aplicação! Deixando o melhor possivel para sua usabilidade e conforto. Prezamos sempre sua capacidade cognitica e sua experiencia com nossa aplicação. Coloque sua critíca ao lado! 
+
+
+
+       </h5>
+
+     </div>
+
+
+
+   </div>
+
+
+
+</main>
+
+
+
+<!-- RODAPÉ -->
+
+<footer class="rodape">
+
+   <p>© 2026 TechHome Direitos Autorais Para José Matheus</p>
+
+</footer>
+
+
+
+</body>
+
+</html>
+
