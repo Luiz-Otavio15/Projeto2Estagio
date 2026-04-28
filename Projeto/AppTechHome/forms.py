@@ -1,0 +1,16 @@
+from django import forms
+from .models import Produto
+
+
+class ProdutoForm(forms.ModelForm):
+    class Meta:
+        model = Produto
+        fields = ['nome', 'descricao', 'estoque', 'preco', 'categoria', 'imagem']
+        widgets = {
+            'nome': forms.TextInput(attrs={'class': 'input-text'}),
+            'descricao': forms.TextInput(attrs={'class': 'input-text'}),
+            'estoque': forms.NumberInput(attrs={'class': 'input-text'}),
+            'preco': forms.NumberInput(attrs={'class': 'input-text'}),
+            'categoria': forms.Select(attrs={'class': 'input-text'}),
+            'imagem': forms.ClearableFileInput(attrs={'class': 'input-text'}),
+        }   

@@ -6,7 +6,7 @@ from .models import Produto, Pedido, Suporte
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import authenticate, login
 from django.views.generic import ListView, DetailView, CreateView, TemplateView, UpdateView, DeleteView, View
-
+from .forms import *
 # Create your views here.
 
 
@@ -134,8 +134,7 @@ class Gerenciador(LoginRequiredMixin, ListView):
 
 
 class AdicionarProduto(LoginRequiredMixin, CreateView):
-    model = Produto
-    fields = ['nome', 'imagem', 'descricao', 'estoque', 'preco', 'categoria']
+    form_class = ProdutoForm
     template_name = 'Tela9Adicionar.html'
     success_url = reverse_lazy('gerenciador')
 
