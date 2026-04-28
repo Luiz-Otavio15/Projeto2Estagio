@@ -1,7 +1,6 @@
 from django.http import HttpRequest
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
-from httpcore import request
 from .models import Produto, Pedido, Suporte
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import authenticate, login
