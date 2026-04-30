@@ -17,6 +17,7 @@ urlpatterns = [
     path('perfil/', Perfil.as_view(), name='perfil'),
     path('gerenciador/', Gerenciador.as_view(), name='gerenciador' ),
     path('addProduto/', AdicionarProduto.as_view(), name='adicionar'),
+    path('addCategoria/', AdicionarCategoria.as_view(), name='adicategoria'),
     path('delete/<int:id>', remover_produto, name='deletar'),
     path('editar/<int:pk>', EditarProduto.as_view(), name='editar'),
 ]

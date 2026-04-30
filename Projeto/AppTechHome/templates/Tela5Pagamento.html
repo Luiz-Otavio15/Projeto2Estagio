@@ -35,7 +35,8 @@
       <!-- DADOS DO CLIENTE -->
       <form action="{% url 'finalizacao' produto.id %}" method="post" class="form-pagamento">
         {% csrf_token %} 
-
+        
+        
         <h3>Dados do Cliente</h3>
 
         <input type="text" placeholder="Nome completo" name="nome_completo" required>

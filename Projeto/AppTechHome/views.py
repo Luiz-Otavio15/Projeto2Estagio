@@ -29,7 +29,7 @@ class ProdutoHomeView(LoginRequiredMixin, ListView):
         
         return queryset
     
-class ProdutoDetalhe(DetailView):
+class ProdutoDetalhe(LoginRequiredMixin, DetailView):
     model = Produto
     template_name = 'Tela4Detalhes.html'
     context_object_name = 'produto'
@@ -37,7 +37,7 @@ class ProdutoDetalhe(DetailView):
 
     
     
-class ProdutoCategoriaView(ListView):
+class ProdutoCategoriaView(LoginRequiredMixin, ListView):
     model = Produto
     template_name = 'Tela3Categoria.html'
     paginate_by = 5
@@ -51,15 +51,15 @@ class ProdutoCategoriaView(ListView):
         
         return queryset
     
-class ProdutoPagamento(DetailView):
+class ProdutoPagamento(LoginRequiredMixin, DetailView):
     model = Produto
     template_name = 'Tela5Pagamento.html'
     context_object_name = 'produto'
 
     
-class ProdutoFinalizacao(CreateView):
+class ProdutoFinalizacao(LoginRequiredMixin, CreateView):
     model = Produto
-    template_name = 'Tela1Home.html'
+    template_name = 'Tela5Pagamento.html'
     context_object_name = 'produto'
     success_url = reverse_lazy('home')
 
@@ -166,6 +166,12 @@ class Gerenciador(LoginRequiredMixin, ListView):
 class AdicionarProduto(LoginRequiredMixin, CreateView):
     form_class = ProdutoForm
     template_name = 'Tela9Adicionar.html'
+    success_url = reverse_lazy('gerenciador')
+
+
+class AdicionarCategoria(LoginRequiredMixin, CreateView):
+    form_class = CategoriaForm
+    template_name = 'Tela11AdicionarCatego.html'
     success_url = reverse_lazy('gerenciador')
 
     

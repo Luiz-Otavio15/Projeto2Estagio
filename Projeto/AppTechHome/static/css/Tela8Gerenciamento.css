@@ -60,6 +60,12 @@ body {
             font-weight: 700;
         }
 
+        .header-title a {
+            text-decoration: none;
+            color: #a8a8b3;
+            font-size: 0.875rem;
+        }
+
         .header-title p {
             font-size: 0.875rem;
             color: #a8a8b3; /* Texto de suporte */

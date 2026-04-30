@@ -24,6 +24,7 @@
             <div class="header-title">
                 <h1>Gerenciamento de Estoque</h1>
                 <p>{{ total_produto }} produtos cadastrados</p>
+                <a href="{% url 'adicategoria'%}">+ Criar uma nova Categoria</a>
             </div>
         </div>
         <form action="{% url 'adicionar' %}">
@@ -32,6 +33,8 @@
                 Novo Produto
             </button>
         </form>
+
+        
         
     </header>
 
