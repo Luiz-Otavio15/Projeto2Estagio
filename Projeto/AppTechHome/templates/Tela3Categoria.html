@@ -25,8 +25,8 @@
     <nav class="cabecalho-direita">
       <a href="{% url 'home' %}">Inicio</a>
       <a href="#" id="cabecalho-usando">Categoria</a>
-      <a href="{% url 'perfil' %}">Perfil</a>
       <a href="{% url 'suporte' %}">Contato</a>
+      <a href="{% url 'perfil' %}">Perfil</a>
     </nav>
   </header>
 
@@ -35,9 +35,10 @@
     <form action="" method="get" class="form-categoria">
       <select name="categoria" class="categoria">
         <option value="">Todas</option>
-        <option value="Notebook">Notebook</option>
-        <option value="Televisão">Televisão</option>
-        <option value="Videogame">Videogame</option>
+        
+        {% for pro in produto %}
+          <option value="{{pro.categoria}}">{{pro.categoria}}</option>
+        {% endfor %}
       </select>
 
       <button type="submit" class="filtro">Filtrar</button>

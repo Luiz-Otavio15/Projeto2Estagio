@@ -6,6 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import authenticate, login
 from django.views.generic import ListView, DetailView, CreateView, TemplateView, UpdateView, DeleteView, View
 from .forms import *
+from django.db.models import Sum, F
 # Create your views here.
 
 
@@ -131,6 +132,36 @@ class Gerenciador(LoginRequiredMixin, ListView):
     template_name = 'Tela8Gerenciamento.html'
     context_object_name = 'produto'
 
+    def get_queryset(self):
+        produtos = super().get_queryset()
+
+        buscar = self.request.GET.get('buscar')
+        
+
+        if buscar:
+            produtos = produtos.filter(nome__icontains=buscar)
+
+        return produtos
+        
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        produto = context['produto']
+
+        context['total_produto'] = produto.count()
+
+
+        context['itens_estoque'] = produto.aggregate(
+            total_estoque=Sum('estoque')
+        )['total_estoque'] or 0
+
+        context['valor_total'] = produto.aggregate(
+            total=Sum(F('preco') * F('estoque'))
+        )['total'] or 0
+
+        for p in produto:
+            p.total = p.preco * p.estoque
+
+        return context  
 
 class AdicionarProduto(LoginRequiredMixin, CreateView):
     form_class = ProdutoForm

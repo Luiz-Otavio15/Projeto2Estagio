@@ -46,14 +46,17 @@
         </div>
         <div class="stat-card">
             <span class="stat-label">Valor Total</span>
-            <p class="stat-value accent">R$ 12.450,00</p>
+            <p class="stat-value accent">{{ valor_total|intcomma }}</p>
         </div>
     </section>
 
     <div class="search-section">
         <div class="search-wrapper">
             <span class="material-symbols-outlined search-icon">search</span>
-            <input type="text" placeholder="Buscar produto..." class="search-input">
+            <form action="{% url 'gerenciador' %}" method="GET">
+                <input name="buscar" type="text" placeholder="Buscar produto..." class="search-input">
+            </form>
+            
         </div>
     </div>
 
@@ -61,6 +64,9 @@
         {% if produto %}
             {% for pro in produto %}
             <div class="product-card">
+                <div>
+                    <img src="{{ pro.imagem.url }}" alt="{{ pro.nome }}">
+                </div>
                 <div class="product-header">
                     <div>
                         <h3 class="product-title">{{ pro.nome }}</h3>
@@ -80,7 +86,7 @@
                     </div>
                     <div class="stat-box">
                         <span class="stat-box-label">Total</span>
-                        <span class="stat-box-value" style="color: #00b37e">R$ 450</span>
+                        <span class="stat-box-value" style="color: #00b37e">R$ {{pro.total}}</span>
                     </div>
                 </div>
 

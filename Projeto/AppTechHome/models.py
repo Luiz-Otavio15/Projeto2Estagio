@@ -1,5 +1,15 @@
 from django.db import models
 
+
+class BaseModel(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    is_deleted = models.BooleanField(default=False)
+    
+    class Meta:
+        abstract = True
+
+
 # Create your models here.
 class Categoria(models.Model):
     nome = models.CharField(max_length=220)
@@ -8,7 +18,7 @@ class Categoria(models.Model):
         return self.nome
 
 
-class Produto(models.Model):
+class Produto(BaseModel):
     nome = models.CharField(max_length=220)
     descricao = models.TextField()
     preco = models.DecimalField(max_digits=10, decimal_places=2)
@@ -43,9 +53,4 @@ class Pedido(models.Model):
         return self.nome
 
 
-class BaseModel(models.Model):
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
 
-    class Meta:
-        abstract = True
