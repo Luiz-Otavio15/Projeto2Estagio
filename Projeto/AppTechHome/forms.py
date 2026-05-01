@@ -23,15 +23,3 @@ class CategoriaForm(forms.ModelForm):
             'nome': forms.TextInput(attrs={'class': 'input-text'})
         }
 
-class PedidoForm(forms.ModelForm):
-    class Meta:
-        model = Pedido
-        fields = ['nome', 'email', 'cpf', 'rua', 'cidade', 'estado']
-        widgets = {
-            'nome': forms.TextInput(attrs={'class': 'input-text'}),
-            'email': forms.EmailInput(attrs={'class': 'input-text'}),
-            'cpf': forms.TextInput(attrs={'class': 'input-text'}),
-            'rua': forms.TextInput(attrs={'class': 'input-text'}),
-            'cidade': forms.TextInput(attrs={'class': 'input-text'}),
-            'estado': forms.TextInput(attrs={'class': 'input-text'}),
-        }

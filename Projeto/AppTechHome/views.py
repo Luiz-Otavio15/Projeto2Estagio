@@ -40,7 +40,7 @@ class ProdutoDetalhe(LoginRequiredMixin, DetailView):
 class ProdutoCategoriaView(LoginRequiredMixin, ListView):
     model = Produto
     template_name = 'Tela3Categoria.html'
-    paginate_by = 5
+    paginate_by = 7
     context_object_name = 'produto'
     
     def get_queryset(self):
@@ -86,15 +86,12 @@ class ProdutoFinalizacao(LoginRequiredMixin, CreateView):
         return redirect('home')
     
 
-class SuporteView(ListView):
+
+class Contato(LoginRequiredMixin, CreateView):
     model = Suporte
     template_name = 'Tela2_Contato.html'
-    context_object_name = 'suporte'
-
-class Contato(CreateView):
-    model = Suporte
-    template_name = 'Tela1Home.html'
     context_object_name = 'contato'
+    fields = ['nome', 'motivo', 'mensagem']
     success_url = reverse_lazy('home')
 
     def post(self, request):
@@ -126,10 +123,37 @@ class Perfil(LoginRequiredMixin, TemplateView):
 
         return contexto
 
-
 class Gerenciador(LoginRequiredMixin, ListView):
     model = Produto
     template_name = 'Tela8Gerenciamento.html'
+    context_object_name = 'produto'
+
+class GerenciadorCate(LoginRequiredMixin, ListView):
+    model = Categoria
+    template_name = 'Tela13GerenciamentoCate.html'
+    context_object_name = 'categoria'    
+
+    def get_queryset(self):
+        categoria = super().get_queryset()
+
+        buscar = self.request.GET.get('buscar')
+        
+
+        if buscar:
+            categoria = categoria.filter(nome__icontains=buscar)
+
+        return categoria
+        
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        categoria = context['categoria']
+
+        context['total_produto'] = categoria.count()
+
+        return context 
+class GerenciadorProd(LoginRequiredMixin, ListView):
+    model = Produto
+    template_name = 'Tela12GerenciamentoProd.html'
     context_object_name = 'produto'
 
     def get_queryset(self):
@@ -166,15 +190,21 @@ class Gerenciador(LoginRequiredMixin, ListView):
 class AdicionarProduto(LoginRequiredMixin, CreateView):
     form_class = ProdutoForm
     template_name = 'Tela9Adicionar.html'
-    success_url = reverse_lazy('gerenciador')
+    success_url = reverse_lazy('gerenciadoPro')
 
 
 class AdicionarCategoria(LoginRequiredMixin, CreateView):
     form_class = CategoriaForm
     template_name = 'Tela11AdicionarCatego.html'
-    success_url = reverse_lazy('gerenciador')
+    success_url = reverse_lazy('gerenciadoCate')
 
-    
+
+class EditarCategoria(LoginRequiredMixin, UpdateView):
+    model = Categoria
+    fields = ['nome']
+    template_name = 'Tela14EditarCate.html'
+    success_url = reverse_lazy('gerenciadoCate')
+
 class EditarProduto(LoginRequiredMixin, UpdateView):
     model = Produto
     fields = ['nome', 'imagem', 'descricao', 'estoque', 'preco', 'categoria']
@@ -186,7 +216,13 @@ class EditarProduto(LoginRequiredMixin, UpdateView):
         print(request.FILES)
         return super().post(request, *args, **kwargs)
 
+
+def remover_categoria(request:HttpRequest, id):
+    categoria = get_object_or_404(Categoria, id=id)
+    categoria.delete()
+    return redirect("gerenciadoCate")
+
 def remover_produto(request:HttpRequest, id):
     produto = get_object_or_404(Produto, id=id)
     produto.delete()
-    return redirect("gerenciador")
+    return redirect("gerenciadoPro")

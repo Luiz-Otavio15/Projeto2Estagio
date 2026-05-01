@@ -1,0 +1,251 @@
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body {
+    background-color: #09090a; /* Fundo da página */
+    color: #e1e1e6; /* Texto principal */
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+}
+
+
+
+        #app {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        /* === HEADER === */
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .header-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-box {
+            background-color: #8257e5; /* Roxo principal */
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo-box button {
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header-title h1 {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .header-title a {
+            text-decoration: none;
+            color: #a8a8b3;
+            font-size: 0.875rem;
+        }
+
+        .header-title p {
+            font-size: 0.875rem;
+            color: #a8a8b3; /* Texto de suporte */
+        }
+
+        /* === BOTÕES === */
+        .btn-add {
+            background: #8257e5;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .btn-add:hover { 
+            background: #9466ff; 
+            transform: translateY(-2px); 
+        }
+
+        /* === SUMMARY CARDS === */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .stat-card {
+            background: #121214; /* Cor do card */
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid #29292e; /* Borda */
+        }
+
+        .stat-label {
+            color: #a8a8b3;
+            font-size: 0.875rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+        }
+
+        .stat-value.accent { color: #8257e5; }
+
+        /* === SEARCH === */
+        .search-section { margin-bottom: 2rem; }
+        
+        .search-wrapper {
+            position: relative;
+            max-width: 100%;
+        }
+
+        .search-input {
+            
+            width: 100%;
+            background: #121214;
+            border: 1px solid #29292e;
+            padding: 0.875rem 1rem 0.875rem 3rem;
+            border-radius: 8px;
+            color: white;
+            transition: border-color 0.2s;
+        }
+
+        .search-input:focus { 
+            border-color: #8257e5; 
+            outline: none; 
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #a8a8b3;
+        }
+
+        /* === PRODUCT GRID === */
+        .cards-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .product-card {
+            background: #121214;
+            border: 1px solid #29292e;
+            border-radius: 12px;
+            padding: 1.25rem;
+            transition: transform 0.2s;
+        }
+
+        .product-card:hover { transform: scale(1.02); }
+
+        .product-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+        img{ 
+            height: 100px;
+            width: 100%;
+            object-fit: contain;
+        }
+        .product-title { font-size: 1rem; font-weight: 600; }
+        .product-category { font-size: 0.75rem; color: #a8a8b3; }
+
+        .product-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .stat-box {
+            background: rgba(255,255,255,0.03);
+            padding: 0.75rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-box-label { font-size: 0.7rem; color: #a8a8b3; display: block; }
+        .stat-box-value { font-size: 0.9rem; font-weight: 700; }
+
+        .btn-action {
+            padding: 0.5rem;
+            border-radius: 6px;
+            border: 1px solid #29292e;
+            background: transparent;
+            color: #a8a8b3;
+            cursor: pointer;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            font-size: 0.875rem;
+        }
+
+        .btn-delete { 
+            color: #f75a68; 
+            border-color: rgba(247, 90, 104, 0.2); 
+        }
+        .btn-delete:hover { background: rgba(247, 90, 104, 0.1); }
+
+        /* === EMPTY STATE === */
+        .empty-container {
+            text-align: center;
+            padding: 4rem;
+            background: #121214;
+            border-radius: 12px;
+            border: 1px dashed #29292e;
+            grid-column: 1 / -1;
+        }
+
+.centro {
+    display: flex;
+    flex-direction: row;  /* Muda de column para row - um ao lado do outro */
+    align-items: center;   /* Centraliza verticalmente */
+    justify-content: center; /* Centraliza horizontalmente o grupo */
+    gap: 20px;             /* Espaço entre os botões (ajuste como preferir) */
+    margin-top: 20px;
+}
+
+.caixa1 {
+    position: relative;
+    z-index: 1;
+}
+
+.caixa2 {
+    position: relative;
+    z-index: 2;
+    /* Remove o margin-top: -12px que estava puxando um botão pra cima */
+}

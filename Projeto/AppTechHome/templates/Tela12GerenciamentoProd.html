@@ -1,0 +1,123 @@
+{% load static %}
+{% load humanize %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Estoque</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="{% static 'css/Tela12GerenciamentoProd.css' %}">
+    
+</head>
+<body>
+
+<div id="app">
+    <header class="main-header">
+        <div class="header-info">
+            <form action="{% url 'gerenciador' %}">
+                <div class="logo-box">
+                    <button type="submit"><span class="material-symbols-outlined" style="color: white">inventory_2</span></button>
+                </div>
+            </form>
+            <div class="header-title">
+                <h1>Gerenciamento de Estoque</h1>
+                <p>{{ total_produto }} produtos cadastrados</p>
+            </div>
+        </div>
+        <form action="{% url 'adicionar' %}">
+            <button class="btn-add">
+                <span class="material-symbols-outlined">add</span>
+                Novo Produto
+            </button>
+        </form>
+
+        
+        
+    </header>
+
+    <section class="summary-grid">
+        <div class="stat-card">
+            <span class="stat-label">Total Produtos</span>
+            <p class="stat-value">{{ total_produto }}</p>
+        </div>
+        <div class="stat-card">
+            <span class="stat-label">Itens em Estoque</span>
+            <p class="stat-value">{{ itens_estoque }}</p>
+        </div>
+        <div class="stat-card">
+            <span class="stat-label">Valor Total</span>
+            <p class="stat-value accent">{{ valor_total|intcomma }}</p>
+        </div>
+    </section>
+
+    <div class="search-section">
+        <div class="search-wrapper">
+            <span class="material-symbols-outlined search-icon">search</span>
+            <form action="{% url 'gerenciadoPro' %}" method="GET">
+                <input name="buscar" type="text" placeholder="Buscar produto..." class="search-input">
+            </form>
+            
+        </div>
+    </div>
+
+    <div class="cards-list">
+        {% if produto %}
+            {% for pro in produto %}
+            <div class="product-card">
+                <div>
+                    <img src="{{ pro.imagem.url }}" alt="{{ pro.nome }}">
+                </div>
+                <div class="product-header">
+                    <div>
+                        <h3 class="product-title">{{ pro.nome }}</h3>
+                        <p class="product-category">Categoria: {{ pro.categoria }}</p>
+                    </div>
+                    
+                </div>
+
+                <div class="product-stats">
+                    <div class="stat-box">
+                        <span class="stat-box-label">Qtd</span>
+                        <span class="stat-box-value">{{ pro.estoque }}</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-box-label">Unit.</span>
+                        <span class="stat-box-value">R$ {{pro.preco|intcomma}}</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-box-label">Total</span>
+                        <span class="stat-box-value" style="color: #00b37e">R$ {{pro.total}}</span>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 0.5rem;">
+                    <form action="{% url 'editar' pro.id %}">
+                        <button class="btn-action">
+                            <span class="material-symbols-outlined" style="font-size: 18px">edit</span> Editar
+                        </button>
+                    </form>
+                    
+                    
+                    <form action="{% url 'deletar' pro.id %}">
+                        <button class="btn-action btn-delete">
+                            <span class="material-symbols-outlined" style="font-size: 18px">delete</span> Excluir
+                        </button>
+                    </form>
+                    
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="empty-container">
+                <span class="material-symbols-outlined" style="font-size: 48px; color: #8257e5; margin-bottom: 1rem;">inventory_2</span>
+                <p style="font-weight: 600;">Nenhum produto encontrado</p>
+                <p style="color: #a8a8b3; font-size: 0.875rem;">Adicione itens para começar a gerenciar seu estoque.</p>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+</body>
+</html>

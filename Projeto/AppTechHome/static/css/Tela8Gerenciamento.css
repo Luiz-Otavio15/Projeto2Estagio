@@ -229,3 +229,23 @@ body {
             border: 1px dashed #29292e;
             grid-column: 1 / -1;
         }
+
+.centro {
+    display: flex;
+    flex-direction: row;  /* Muda de column para row - um ao lado do outro */
+    align-items: center;   /* Centraliza verticalmente */
+    justify-content: center; /* Centraliza horizontalmente o grupo */
+    gap: 20px;             /* Espaço entre os botões (ajuste como preferir) */
+    margin-top: 20px;
+}
+
+.caixa1 {
+    position: relative;
+    z-index: 1;
+}
+
+.caixa2 {
+    position: relative;
+    z-index: 2;
+    /* Remove o margin-top: -12px que estava puxando um botão pra cima */
+}
