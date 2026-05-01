@@ -75,11 +75,11 @@ body {
 
 .form-pagamento input,.form-pagamento select {
   width: 100%;
-  background: #0f1117;
+  background: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 12px 15px;
   border-radius: 10px;
-  color: white;
+  color: rgb(0, 0, 0);
   font-size: 0.95rem;
   outline: none;
   transition: border-color 0.2s;
