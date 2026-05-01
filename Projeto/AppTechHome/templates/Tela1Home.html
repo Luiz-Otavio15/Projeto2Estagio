@@ -51,7 +51,6 @@
     
     <div class="vitrine">
       {% for produtos in produto %}
-        {% if forloop.counter <= 10 %}
       <div class="item-produto">
         
         <img src="{{produtos.imagem.url }}" alt="{{produtos.nome}}">
@@ -65,7 +64,6 @@
         </a>
           
       </div>
-        {% endif %}
       {% endfor %}
     </div>
   </main>

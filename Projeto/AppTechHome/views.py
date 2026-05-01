@@ -17,6 +17,7 @@ from django.db.models import Sum, F
 class ProdutoHomeView(LoginRequiredMixin, ListView):
     model = Produto
     template_name = 'Tela1Home.html'
+    paginate_by = 10
     context_object_name = 'produto'
 
     def get_queryset(self):
@@ -40,12 +41,17 @@ class ProdutoDetalhe(LoginRequiredMixin, DetailView):
 class ProdutoCategoriaView(LoginRequiredMixin, ListView):
     model = Produto
     template_name = 'Tela3Categoria.html'
-    paginate_by = 7
+    paginate_by = 3
     context_object_name = 'produto'
     
     def get_queryset(self):
-        queryset = Produto.objects.all()
+        queryset = super().get_queryset()
         categorias = self.request.GET.get('categoria')
+        pagina = self.request.GET.get('buscar')
+
+        if pagina:
+            queryset = queryset.filter(nome__icontains=pagina)
+
         if categorias:
                 queryset = queryset.filter(categoria__nome=categorias)
         
