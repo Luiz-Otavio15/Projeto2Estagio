@@ -82,6 +82,7 @@ body {
 .item-produto {
   border-radius: 10px;
   padding: 15px;
+  padding-left: 60px;
   display: flex;
   width: 300px;
   flex-direction: column;

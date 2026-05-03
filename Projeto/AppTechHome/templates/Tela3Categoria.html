@@ -36,8 +36,8 @@
       <select name="categoria" class="categoria">
         <option value="">Todas</option>
         
-        {% for pro in produto %}
-          <option value="{{pro.categoria}}">{{pro.categoria}}</option>
+        {% for cate in categoria %}
+          <option value="{{cate.nome}}">{{cate.nome}}</option>
         {% endfor %}
       </select>
 

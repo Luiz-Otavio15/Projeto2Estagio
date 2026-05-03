@@ -57,6 +57,10 @@ class ProdutoCategoriaView(LoginRequiredMixin, ListView):
         
         return queryset
     
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['categoria'] = Categoria.objects.all()
+        return context
 class ProdutoPagamento(LoginRequiredMixin, DetailView):
     model = Produto
     template_name = 'Tela5Pagamento.html'
@@ -215,7 +219,7 @@ class EditarProduto(LoginRequiredMixin, UpdateView):
     model = Produto
     fields = ['nome', 'imagem', 'descricao', 'estoque', 'preco', 'categoria']
     template_name = 'Tela10Editar.html'
-    success_url = reverse_lazy('gerenciador')
+    success_url = reverse_lazy('gerenciadoPro')
     
 
     def post(self, request, *args, **kwargs):
