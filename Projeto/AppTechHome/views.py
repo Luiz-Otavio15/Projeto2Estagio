@@ -164,12 +164,17 @@ class GerenciadorCate(LoginRequiredMixin, ListView):
 class GerenciadorProd(LoginRequiredMixin, ListView):
     model = Produto
     template_name = 'Tela12GerenciamentoProd.html'
+    paginate_by = 6
     context_object_name = 'produto'
 
     def get_queryset(self):
         produtos = super().get_queryset()
 
         buscar = self.request.GET.get('buscar')
+        pagina = self.request.GET.get('pagina')
+
+        if pagina:
+            queryset = queryset.filter(nome__icontains=pagina)
         
 
         if buscar:
