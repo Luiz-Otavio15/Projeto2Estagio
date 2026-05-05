@@ -1,4 +1,5 @@
 {% load static %}
+{% load humanize %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,7 +52,7 @@
         <p>Quantidade no estoque: {{produto.estoque}}</p>
         <br>
 
-        <h1 class="preco">R$ {{produto.preco}}</h1>
+        <h1 class="preco">R$ {{produto.preco|intcomma}}</h1>
         
         
         

@@ -1,5 +1,5 @@
 {% load static %}
-
+{% load humanize %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -74,9 +74,9 @@
         <img src="{{produto.imagem.url}}" alt="{{produto.nome}}">
         <p>{{produto.nome}}</p>
         <br>
-        <p>Preço: R$ {{produto.preco}}</p>
+        <p>Preço: R$ {{produto.preco|intcomma}}</p>
         <hr>
-        <p class="total">Total: R$ {{produto.preco}}</p>
+        <p class="total">Total: R$ {{produto.preco|intcomma}}</p>
       
       </div>
 

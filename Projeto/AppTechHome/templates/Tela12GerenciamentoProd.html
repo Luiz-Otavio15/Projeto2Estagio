@@ -118,22 +118,7 @@
         {% endif %}
     </div>
 
-    <div class="paginacao">
-              <span>Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</span>
-
-                {% if page_obj.has_previous %}
-                    <a href="?page=1&buscar={{ request.GET.pagina }}">Primeira</a>
-                    <a href="?page={{ page_obj.previous_page_number }}&buscar={{ request.GET.pagina }}" class="anterior"> < Anterior</a>
-                {% endif %}
-
-                
-
-                {% if page_obj.has_next %}
-                    <a href="?page={{ page_obj.next_page_number }}&buscar={{ request.GET.pagina }}" class="proxima">Próxima > </a>
-                    <a href="?page={{ page_obj.paginator.num_pages }}&buscar={{ request.GET.pagina }}">Última</a>
-                {% endif %}
-
-    </div>
+    
 </div>
 
 </body>

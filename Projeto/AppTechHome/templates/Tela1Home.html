@@ -1,5 +1,5 @@
 {% load static %}
-
+{% load humanize %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -56,7 +56,7 @@
         <img src="{{produtos.imagem.url }}" alt="{{produtos.nome}}">
         
         <h3>{{produtos.nome}}</h3>
-        <p class="valor">R$ {{produtos.preco}}</p>
+        <p class="valor">R$ {{produtos.preco|intcomma}}</p>
         
         
         <a href="{% url 'detalhe_produto' produtos.id %}" class="acoes-produto">
